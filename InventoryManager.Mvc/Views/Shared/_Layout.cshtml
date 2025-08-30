@@ -1,0 +1,55 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - Product Inventory</title>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/InventoryManager.Mvc.styles.css" asp-append-version="true" />
+</head>
+<body>
+    <header>
+        <nav class="navbar navbar-expand-lg nav-aurora mb-3">
+            <div class="container-fluid">
+                <a class="navbar-brand fw-semibold" asp-controller="Products" asp-action="Index">🛒 Product Inventory</a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNav">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div id="mainNav" class="collapse navbar-collapse">
+                    <ul class="navbar-nav me-auto">
+                        <li class="nav-item">
+                            <a class="nav-link" asp-controller="Products" asp-action="Index">Inventory</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" asp-controller="Products" asp-action="Create">Add Product</a>
+                        </li>
+                    </ul>
+                    <form class="d-flex" method="get" asp-controller="Products" asp-action="Index" role="search">
+                        <input class="form-control me-2" type="search" name="q" placeholder="Search by ID or name…">
+                        <button class="btn btn-outline-light btn-pill" type="submit">Search</button>
+                    </form>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <div class="container">
+        <main role="main" class="pb-4">
+            @RenderBody()
+        </main>
+    </div>
+
+    <footer class="py-4">
+        <div class="container d-flex justify-content-between align-items-center">
+            <span class="footer-note">&copy; @DateTime.Now.Year • Product Inventory</span>
+            <span class="small footer-note">ASP.NET Core MVC • Dictionary&lt;int, Product&gt;</span>
+        </div>
+    </footer>
+
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+    @await RenderSectionAsync("Scripts", required: false)
+</body>
+</html>
